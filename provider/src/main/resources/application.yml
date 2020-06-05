@@ -12,3 +12,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/  # 提供给其他服务的eureka注册地址
+
+
+
