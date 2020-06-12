@@ -4,7 +4,6 @@ package com.example.provider.bean;/**
  * @Date: 2020/6/1 14:50
  */
 
-import io.searchbox.annotations.JestId;
 import lombok.Data;
 
 /**
@@ -17,7 +16,6 @@ import lombok.Data;
 @Data
 public class ArticleBean {
 
-    @JestId
     private Integer id;
     private String title;
     private String author;
