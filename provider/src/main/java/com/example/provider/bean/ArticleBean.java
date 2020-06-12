@@ -20,4 +20,12 @@ public class ArticleBean {
     private String title;
     private String author;
 
+    public ArticleBean(Integer id, String title, String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
+
+    public ArticleBean() {
+    }
 }
