@@ -37,6 +37,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -152,6 +153,40 @@ public class EsArticleDocController {
         BulkResponse bulkResponse = restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
 
 
+        return bulkResponse.toString() +"";
+    }
+
+    @ResponseBody
+    @ApiOperation(value = "6.Provider_es中批量添加articleBean")
+    @PostMapping("/bulkAddArticleToEs")
+    public String bulkAddArticleToEs() throws IOException {
+
+        BulkResponse bulkResponse = null;
+
+        ArticleBean article1 = new ArticleBean(1,"第1个文章","第1个作者");
+        ArticleBean article2 = new ArticleBean(2,"第2个文章","第2个作者");
+        ArticleBean article3 = new ArticleBean(3,"第3个文章","第3个作者");
+        ArticleBean article4 = new ArticleBean(4,"第4个文章","第4个作者");
+
+        List<ArticleBean> articleBeanList = new ArrayList<ArticleBean>();
+        articleBeanList.add(article1);
+        articleBeanList.add(article2);
+        articleBeanList.add(article3);
+        articleBeanList.add(article4);
+
+        BulkRequest bulkRequest = new BulkRequest();
+        bulkRequest.timeout(TimeValue.timeValueSeconds(10));
+
+        for(int i=0;i<articleBeanList.size();i++){
+            bulkRequest.add(new IndexRequest("index_name")
+//                    .id("")
+                    .source(JSON.toJSONString(articleBeanList.get(i)),XContentType.JSON));
+            if(bulkRequest.requests().size()==2){//批量每次存2个对象
+                bulkResponse = restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
+                bulkRequest.requests().clear();//存完后清空，再存
+            }
+
+        }
         return bulkResponse.toString() +"";
     }
 
