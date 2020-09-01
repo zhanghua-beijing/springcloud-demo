@@ -31,4 +31,11 @@ public class TicketController {
         System.out.println("我被调用了");
         return ticketService.getTicket();
     }
+
+    @ApiOperation(value = "11.ticket提供接口")
+    @GetMapping("/getTicket1")
+    public String getTicket1(){
+        System.out.println("我被调用了");
+        return ticketService.getTicket();
+    }
 }
