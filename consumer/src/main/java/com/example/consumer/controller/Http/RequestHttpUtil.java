@@ -31,6 +31,7 @@ public class RequestHttpUtil {
                 conn.setRequestProperty("accept", "*/*");
                 conn.setRequestProperty("connection", "Keep-Alive");
                 conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+                conn.addRequestProperty("appkey","123465789");
             } else {
                 // 设置自定义的请求属性
                 // connection.setRequestProperty("user-agent","Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
@@ -78,8 +79,8 @@ public class RequestHttpUtil {
             // 打开和URL之间的连接
             URLConnection conn = null;
             conn = realUrl.openConnection();
-            conn.setConnectTimeout(2000);
-            conn.setReadTimeout(1000);
+//            conn.setConnectTimeout(2000);
+//            conn.setReadTimeout(1000);
             if (requestheader != null) {
                 // 自定义请求属性
                 for (String key : requestheader.keySet())
@@ -91,6 +92,7 @@ public class RequestHttpUtil {
                 conn.setRequestProperty("connection", "Keep-Alive");
                 conn.setRequestProperty("user-agent",
                         "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36");
+                conn.addRequestProperty("appkey","123465789");
             }
             // 发送POST请求必须设置如下两行
             conn.setDoOutput(true);
