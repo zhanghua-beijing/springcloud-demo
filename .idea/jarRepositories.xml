@@ -17,6 +17,11 @@
       <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="newmedia" />
+      <option name="name" value="newmedia" />
+      <option name="url" value="http://10.19.0.172:8081/repository/product-pdmiyun/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
